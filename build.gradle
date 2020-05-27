@@ -1,0 +1,49 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+allprojects {
+    group = 'io.rlx'
+    version = '0.0.1-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    apply plugin: 'groovy'
+    apply plugin: 'idea'
+    apply plugin: 'io.spring.dependency-management'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
+        }
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+}
+
+subprojects {
+    dependencies {
+        compile "org.codehaus.groovy:groovy-all:2.4.15"
+
+        compile "org.springframework.boot:spring-boot-starter-web"
+        testCompile "org.springframework.boot:spring-boot-starter-test"
+
+
+
+        //    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2"
+    //    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    }
+}

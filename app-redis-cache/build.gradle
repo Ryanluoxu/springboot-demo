@@ -1,0 +1,8 @@
+dependencies {
+    compile project(':common')
+    compile "org.springframework.boot:spring-boot-starter-data-redis"
+    compile 'org.redisson:redisson:3.10.3'
+}
+
+jar.manifest.attributes 'Main-Class': 'io.rlx.sb.RedisCacheApp'
+apply from: "$rootDir/gradle/artifacts.gradle"
